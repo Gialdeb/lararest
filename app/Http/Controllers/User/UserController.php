@@ -18,7 +18,8 @@ class UserController extends ApiController
         //creo la variabile utente e seleziono tutti
         $users = User::all();
 
-        return response()->json(['data' => $users], 200);
+//        return response()->json(['data' => $users], 200);
+        return $this->showAll($users);
 //        return $users; in questo caso non ho la possibilità di gestire il json
 
     }
@@ -51,7 +52,8 @@ class UserController extends ApiController
 
         $user = User::create($data);
 
-        return response()->json(['data' => $user], 201);
+//        return response()->json(['data' => $user], 201);
+        return $this->showOne($user, 201);
     }
 
     /**
@@ -65,7 +67,8 @@ class UserController extends ApiController
         //mostro utente
         $user = User::findOrFail($id); //cerco l'utente con id
 
-        return response()->json(['data' => $user], 200);
+//        return response()->json(['data' => $user], 200);
+        return $this->showOne($user, 200);
     }
 
 
@@ -119,7 +122,8 @@ class UserController extends ApiController
 
         $user->save();
 
-        return response()->json(['data' => $user], 200);
+//        return response()->json(['data' => $user], 200);
+        return $this->showOne($user);
     }
 
     /**
@@ -135,6 +139,7 @@ class UserController extends ApiController
 
         $user->delete();
 
-        return response()->json(['data' => $user], 200);
+//        return response()->json(['data' => $user], 200);
+        return $this->showOne($user);
     }
 }
